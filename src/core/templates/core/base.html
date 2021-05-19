@@ -41,8 +41,13 @@
 
         <footer class="footer">
             <h3 class="is-size-4 mb-4">Interiorshop</h3>
+            {% if request.is_authenticated %}
+                <a href="{% url 'vendor_admin' %}">Vendor Admin</a>
+            {% else %}
+            <a href="{% url 'become_vendor' %}">Become vendor</a>
 
-            <a href="#">Become vendor</a>
+            {% endif %}
+            
         </footer>
     </body>
 </html>

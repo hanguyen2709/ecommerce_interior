@@ -51,6 +51,9 @@ class Product(models.Model):
     class Meta:
         ordering = ['-date_added']
 
+    def __str__(self) -> str:
+        return self.title
+
     def get_thumbnail(self):
         if self.thumbnail:
             return self.thumbnail.url

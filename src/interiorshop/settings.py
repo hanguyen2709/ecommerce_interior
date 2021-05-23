@@ -32,6 +32,8 @@ LOGOUT_REDIRECT_URL = 'front_page'
 SESSION_COOKIE_AGE = 86400
 CART_SESSION_ID = 'cart'
 # Application definition
+STRIPE_PUB_KEY ='pk_test_51IuKUJJDQTBixR1WqzphkBP0nTIzmktOtiUkIrKRl0zvIlqMZSC7ELu1D9PaK8MsHzPRZ5WYpfwkek46YIfN09Rx00Dr2b3A17'
+STRIPE_SECRET_KEY = 'sk_test_51IuKUJJDQTBixR1WXKklnNKQlWkJoy2nb488QRtXo9xSpgRyYR3kARLJfAOzTbdrmokajPvKAnSbGrJkDFFH8eaP00JDkfILJ3'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -41,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
-
+    'order',
     'vendor',
     'product',
     'cart',

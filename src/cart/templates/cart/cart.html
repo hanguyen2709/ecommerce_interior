@@ -1,5 +1,7 @@
 {% extends 'core/base.html' %}
+
 {% block title %}Cart | {% endblock %}
+
 {% block content %}
     <h1 class="title">Cart</h1>
 
@@ -53,7 +55,7 @@
         <h2 class="subtitle">Contact information</h2>
 
         <form method="post" action="." id="payment-form">
-            {% csrf_token %}    
+            {% csrf_token %}
 
             {% if form.non_field_errors %}
                 <div class="notification is-danger">

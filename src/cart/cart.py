@@ -1,5 +1,7 @@
 from django.conf import settings
-from .models import Product
+import sys, os
+sys.path.insert(0, os.path.abspath('..'))
+from product.models import Product
 
 
 class Cart(object):

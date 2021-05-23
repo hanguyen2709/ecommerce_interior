@@ -52,7 +52,6 @@ def cart_detail(request):
     remove_from_cart = request.GET.get('remove_from_cart', '')
     change_quantity = request.GET.get('change_quantity', '')
     quantity = request.GET.get('quantity', 0)
-    print(18,vars(cart),quantity)
 
     if remove_from_cart:
         cart.remove(remove_from_cart)
@@ -68,3 +67,6 @@ def cart_detail(request):
         'form':form,
         'stripe_pub_key':settings.STRIPE_PUB_KEY
     })
+
+def success(request):
+    return render(request, 'cart/success.html')

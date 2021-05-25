@@ -16,17 +16,16 @@ def cart_detail(request):
         form = CheckoutForm(request.POST)
 
         if form.is_valid():
-            stripe.api_key = settings.STRIPE_SECRET_KEY
-
-            stripe_token = form.cleaned_data['stripe_token']
-
+            # stripe.api_key = settings.STRIPE_SECRET_KEY
+            # stripe_token = form.cleaned_data['stripe_token']
+            # print(21, stripe_token,int(cart.get_total_cost() * 100))
             try:
-                charge = stripe.Charge.create(
-                    amount=int(cart.get_total_cost() * 100),
-                    currency='USD',
-                    description='Charge from Interiorshop',
-                    source=stripe_token
-                )
+                # charge = stripe.Charge.create(
+                #     amount=int(cart.get_total_cost() * 100),
+                #     currency='VND',
+                #     description='Charge from Interiorshop',
+                #     source=stripe_token
+                # )
 
                 first_name = form.cleaned_data['first_name']
                 last_name = form.cleaned_data['last_name']

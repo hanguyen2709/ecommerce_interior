@@ -1,13 +1,14 @@
-
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required 
 from django.contrib.auth.forms import UserCreationForm
 from django.utils.text import slugify
-
 from .models import Vendor
-from product.models import Product
 from .forms import ProductForm
+import sys, os
+sys.path.insert(0, os.path.abspath('..'))
+from product.models import Product
+
 
 def become_vendor(request):
     if request.method == 'POST':
@@ -28,8 +29,21 @@ def become_vendor(request):
 @login_required
 def vendor_admin(request):
     vendor = request.user.vendor
-    print(31,vars(vendor))
     products = vendor.products.all()
+    orders = vendor.orders.all()
+
+    for order in orders:
+        order.vendor_amount = 0
+        order.vendor_paid_amount = 0
+        order.fully_paid = True
+
+        for item in order.items.all():
+            if item.vendor == request.user.vendor:
+                if item.vendor_paid:
+                    order.vendor_paid_amount += item.get_total_price()
+                else:
+                    order.vendor_amount += item.get_total_price()
+                    order.fully_paid = False
 
     return render(request, 'vendor/vendor_admin.html', {'vendor':vendor, 'products':products})
 
